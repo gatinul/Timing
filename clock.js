@@ -23,7 +23,11 @@ window.onload = function() {
 		var clock = document.getElementById('clockdiv')
 		function updateClock(){
 			var t = getTimeRemaining(endtime);
-			clock.innerHTML = 'days' + t.days + '&lt;br&gt;' + 'hours' + t.hours + '&lt;br&gt;' + 'minutes' + t.minutes + '&lt;br&gt;' + 'seconds' + t.seconds;
+			var daysSpan = clock.querySelector('.days');
+			var hoursSpan = clock.querySelector('.hours');
+			var minutesSpan = clock.querySelector('minutes');
+			var secondsSpan = clock.querySelector('seconds');
+			daysSpan.innerHTML = t.days;
 			if (t.total <= 0) {
 				clearInterval(timeinterval);
 			}
