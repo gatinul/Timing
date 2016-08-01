@@ -21,13 +21,15 @@ window.onload = function() {
 
 	function initializeClock(id, endtime) {
 		var clock = document.getElementById('clockdiv')
-		var timeinterval = setInterval(function() {
+		function updateClock(){
 			var t = getTimeRemaining(endtime);
 			clock.innerHTML = 'days' + t.days + '&lt;br&gt;' + 'hours' + t.hours + '&lt;br&gt;' + 'minutes' + t.minutes + '&lt;br&gt;' + 'seconds' + t.seconds;
 			if (t.total <= 0) {
 				clearInterval(timeinterval);
 			}
-		}, 1000)
+		}
+		updateClock();
+		var timeinterval = setInterval(updateClock,1000);
 	}
 	initializeClock('clockdiv', deadline);
 };
